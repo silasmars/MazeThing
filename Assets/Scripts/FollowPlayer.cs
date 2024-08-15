@@ -3,20 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FollowPlayer : MonoBehaviour
+      [RequireComponent(typeof(NavMeshAgent))]
+
+   public class FollowPlayer : MonoBehaviour
    {
-       public Tranform goal;
-       UnityEngine.AI.NavMeshAgent agent;
+          public Transform goal;
+
+
+          NavMeshAgent agent;
 
        // Start is called before the first frame update
-       void Start()
+    void Start()
           {
-              agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+              agent = GetComponent<NavMeshAgent>();
           }
 
        // Update is called once per frame
-       void Update()
+    void Update()
           {
-              agent.destination = goal.position;
+                /* if (agent.pathPending || !agent.isOnNavMesh || agent.remainingDistance > 0.1f)
+                   {
+                      // Exit function (update) here
+                      // We want to exit if we currently have a path
+                   }*/
+        
+             agent.destination = goal.position;
           }
    }
